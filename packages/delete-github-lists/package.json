@@ -1,0 +1,11 @@
+{
+  "name": "delete-github-lists",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun --bun --env-file=../../.env index.ts"
+  },
+  "dependencies": {
+    "@octokit/graphql": "^8.1.1"
+  }
+}
