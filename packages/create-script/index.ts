@@ -13,6 +13,10 @@ if (!scriptName) {
   }));
 }
 
+if (!scriptName) {
+  throw new Error('Missing script name');
+}
+
 // Copy data folder into script-name folder
 const dest = `../${scriptName}`;
 await cp('./data', dest, { recursive: true });

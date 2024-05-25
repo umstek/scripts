@@ -3,7 +3,7 @@
   "workspaces": ["packages/*"],
   "scripts": {
     "check": "bun biome check . --apply",
-    "s": "bun --bun ./index.ts"
+    "s": "bun --bun ./s"
   },
   "dependencies": {
     "authenticate-github-scripts": "workspace:*",
