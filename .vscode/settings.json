@@ -1,6 +1,7 @@
 {
   "conventionalCommits.scopes": [
     "project",
-    "create-script"
+    "create-script",
+    "dx"
   ]
 }

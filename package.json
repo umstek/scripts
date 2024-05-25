@@ -3,9 +3,7 @@
   "workspaces": ["packages/*"],
   "scripts": {
     "check": "bun biome check . --apply",
-    "create-script": "cd packages/create-script && bun start",
-    "delete-github-lists": "cd packages/delete-github-lists && bun start",
-    "authenticate-github-scripts": "cd packages/authenticate-github-scripts && bun start"
+    "s": "bun --bun ./index.ts"
   },
   "dependencies": {
     "authenticate-github-scripts": "workspace:*",
@@ -22,7 +20,5 @@
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
-  "trustedDependencies": [
-    "@biomejs/biome"
-  ]
+  "trustedDependencies": ["@biomejs/biome"]
 }

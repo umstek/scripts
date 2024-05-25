@@ -2,11 +2,16 @@ import { cp, readFile, writeFile } from 'node:fs/promises';
 import { $, Glob } from 'bun';
 import prompts from 'prompts';
 
-const { scriptName }: { scriptName: string } = await prompts({
-  type: 'text',
-  name: 'scriptName',
-  message: 'What is the name of the script you want to create (in kebab-case)?',
-});
+let [scriptName] = process.argv.slice(2);
+
+if (!scriptName) {
+  ({ scriptName } = await prompts({
+    type: 'text',
+    name: 'scriptName',
+    message:
+      'What is the name of the script you want to create (in kebab-case)?',
+  }));
+}
 
 // Copy data folder into script-name folder
 const dest = `../${scriptName}`;
