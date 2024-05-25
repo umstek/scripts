@@ -8,7 +8,7 @@ const deviceCodeResponse = await fetch('https://github.com/login/device/code', {
     Accept: 'application/json',
   },
   body: JSON.stringify({
-    client_id: process.env.GITHUB_SCRIPTS_CLIENT_ID,
+    client_id: process.env.GITHUB_APP_CLIENT_ID,
     scope: 'repo, public_repo, user',
   }),
 });
@@ -50,7 +50,7 @@ for await (const startTime of setInterval(interval * 1000, Date.now(), {
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          client_id: process.env.GITHUB_SCRIPTS_CLIENT_ID,
+          client_id: process.env.GITHUB_APP_CLIENT_ID,
           device_code: device_code,
           grant_type: 'urn:ietf:params:oauth:grant-type:device_code',
         }),
