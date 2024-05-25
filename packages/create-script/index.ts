@@ -20,4 +20,4 @@ for await (const file of glob.scan(dest)) {
   await writeFile(`${dest}/${file}`, newContent, 'utf8');
 }
 
-await $`cd .. && bun add ${scriptName}`;
+await $`cd ../.. && bun add ${scriptName}@workspace:packages/${scriptName}`;
