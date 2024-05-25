@@ -9,6 +9,7 @@
     "authenticate-github-scripts": "workspace:*",
     "create-script": "workspace:*",
     "delete-github-lists": "workspace:*",
+    "fallback": "workspace:*",
     "prompts": "^2.4.2"
   },
   "devDependencies": {
