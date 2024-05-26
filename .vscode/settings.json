@@ -4,6 +4,7 @@
     "create-script",
     "dx",
     "env",
-    "fallback"
+    "fallback",
+    "authenticate-github-scripts"
   ]
 }

@@ -1,4 +1,4 @@
-import { setInterval } from 'node:timers/promises';
+import { setTimeout } from 'node:timers/promises';
 import open from 'open';
 
 const deviceCodeResponse = await fetch('https://github.com/login/device/code', {
@@ -9,7 +9,7 @@ const deviceCodeResponse = await fetch('https://github.com/login/device/code', {
   },
   body: JSON.stringify({
     client_id: process.env.GITHUB_APP_CLIENT_ID,
-    scope: 'repo, public_repo, user',
+    scope: 'admin:org, repo, delete_repo, public_repo, user',
   }),
 });
 
@@ -27,18 +27,12 @@ console.log(
 
 await open(verification_uri);
 
-const ac = new AbortController();
-// Interval is the minimum wait time to ask for an access token
-for await (const startTime of setInterval(interval * 1000, Date.now(), {
-  signal: ac.signal,
-})) {
-  const now = Date.now();
-  if (now - startTime > expires_in * 1000) {
-    ac.abort();
-    break;
-  }
-
-  console.log('Waiting for device code to be validated...');
+for (
+  const startTime = Date.now();
+  startTime + expires_in * 1000 > Date.now();
+) {
+  console.log('Waiting for you to enter the code...');
+  await setTimeout(interval * 1000);
 
   try {
     const response = await fetch(
@@ -61,9 +55,10 @@ for await (const startTime of setInterval(interval * 1000, Date.now(), {
 
     if (access_token) {
       console.log('Access token:', access_token);
-      ac.abort();
       break;
     }
+
+    console.log('No access token found. ');
   } catch (error) {
     console.error(error);
   }
