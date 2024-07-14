@@ -5,6 +5,7 @@
     "dx",
     "env",
     "fallback",
-    "authenticate-github-scripts"
+    "authenticate-github-scripts",
+    "extract-strings-from-binary"
   ]
 }

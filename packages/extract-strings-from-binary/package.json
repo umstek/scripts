@@ -1,0 +1,9 @@
+{
+  "name": "extract-strings-from-binary",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun --env-file=../../.env index.ts"
+  },
+  "dependencies": {}
+}

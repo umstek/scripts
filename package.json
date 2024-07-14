@@ -18,6 +18,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
     "@types/bun": "^1.1.6",
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.14.10",
     "@types/prompts": "^2.4.9"
   },
