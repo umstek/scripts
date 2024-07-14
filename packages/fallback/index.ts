@@ -1,21 +1,23 @@
-import { $ } from 'bun';
 import os from 'node:os';
 import path from 'node:path';
+import { $ } from 'bun';
 import OpenAI from 'openai';
 import prompts from 'prompts';
 
 const homeDir = os.homedir();
 
-const shell =
+const currentShellType =
   (process.env.SHELL || '/usr/bin/bash').split('/').at(-1) || 'bash';
 const paths = new Map([
   ['bash', path.join(homeDir, '.bash_history')],
   ['zsh', path.join(homeDir, '.zsh_history')],
   ['sh', path.join(homeDir, '.history')],
 ]);
-const defaultHistoryFilePath = process.env.HISTFILE || paths.get(shell) || '';
-paths.delete(shell);
-
+// Prioritize provided history file, or get the default one.
+const defaultHistoryFilePath =
+  process.env.HISTFILE || paths.get(currentShellType) || '';
+// Place defaultHistoryFilePath at the top, but also consider others.
+paths.delete(currentShellType);
 const historyFile = [defaultHistoryFilePath, ...paths.values()]
   .map((p) => Bun.file(p))
   .find((f) => f.exists());
@@ -32,16 +34,16 @@ if (lastCommand === 's' || lastCommand?.endsWith(';s')) {
 if (!lastCommand) {
   throw new Error('No last command found');
 }
+// Strip other things attached by zsh
 lastCommand = lastCommand.replace(/^: \d+:\d+;/, '');
 
-const groq = new OpenAI({
+const api = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   // apiKey: process.env.GROQ_API_KEY,
   // baseURL: 'https://api.groq.com/openai/v1',
 });
-const re = await groq.chat.completions.create({
-  model: 'gpt-4o',
-  // model: 'llama3-8b-8192',
+const re = await api.chat.completions.create({
+  model: process.env.AI_CHAT || 'gpt-4o',
   messages: [
     {
       role: 'system',
@@ -80,4 +82,4 @@ if (!selectedCommand) {
   throw new Error('No command selected');
 }
 
-await $`${shell} -c "${selectedCommand}"`;
+await $`${currentShellType} -c "${selectedCommand}"`;

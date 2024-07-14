@@ -2,7 +2,7 @@
   "name": "create-script",
   "module": "index.ts",
   "scripts": {
-    "start": "bun --bun --env-file=../../.env index.ts"
+    "start": "bun --env-file=../../.env index.ts"
   },
   "type": "module"
 }
