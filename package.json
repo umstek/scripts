@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "authenticate-github-scripts": "workspace:*",
-    "commander": "^12.1.0",
+    "commander": "^13.0.0",
     "create-script": "workspace:*",
     "delete-github-lists": "workspace:*",
     "fallback": "workspace:*",
