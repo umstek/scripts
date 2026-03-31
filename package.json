@@ -11,7 +11,7 @@
     "delete-github-lists": "workspace:*",
     "fallback": "workspace:*",
     "fs-extra": "^11.2.0",
-    "ink": "^5.0.1",
+    "ink": "^6.0.0",
     "prompts": "^2.4.2",
     "react": "^18.3.1"
   },
