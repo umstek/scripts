@@ -5,5 +5,5 @@
   "scripts": {
     "start": "bun --env-file=../../.env index.ts"
   },
-  "dependencies": { "openai": "^4.47.1" }
+  "dependencies": { "openai": "^6.0.0" }
 }
