@@ -6,6 +6,6 @@
     "start": "bun --env-file=../../.env index.ts"
   },
   "dependencies": {
-    "open": "^10.1.0"
+    "open": "^11.0.0"
   }
 }
