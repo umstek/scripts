@@ -6,6 +6,6 @@
     "start": "bun --env-file=../../.env index.ts"
   },
   "dependencies": {
-    "@octokit/graphql": "^8.1.1"
+    "@octokit/graphql": "^9.0.0"
   }
 }
